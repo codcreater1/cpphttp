@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} / ${{ matrix.build_type }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, ubuntu-20.04, macos-13]
+        build_type: [Debug, Release]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure CMake
+        run: |
+          cmake -B build \
+            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} \
+            -DBUILD_EXAMPLES=ON
+
+      - name: Build
+        run: cmake --build build --config ${{ matrix.build_type }} --parallel
+
+      - name: Smoke test (Linux only)
+        if: runner.os == 'Linux'
+        run: |
+          ./build/hello_world &
+          SERVER_PID=$!
+          sleep 1
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080/api/health)
+          kill $SERVER_PID
+          [ "$STATUS" = "200" ] && echo "✓ Health check passed" || (echo "✗ Expected 200, got $STATUS" && exit 1)
