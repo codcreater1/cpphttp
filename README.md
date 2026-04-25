@@ -2,7 +2,7 @@
 
 > A lightweight, dependency-free HTTP/1.1 server built in modern **C++17** — from raw POSIX sockets up.
 
-[![CI](https://github.com/yourusername/cpphttp/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/cpphttp/actions)
+[![CI](https://github.com/codcreater1/cpphttp/actions/workflows/ci.yml/badge.svg)](https://github.com/codcreater1/cpphttp/actions)
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20macOS-lightgrey)]()
@@ -34,6 +34,16 @@
 
 ---
 
+## 📸 Screenshots
+
+**Server running — 12 threads, live access log:**
+![terminal](https://github.com/user-attachments/assets/27ce6f12-43bc-4808-998c-374500dfef60)
+
+**Browser output at `localhost:8080`:**
+![browser](https://github.com/user-attachments/assets/e053fd27-8cb9-42b6-ae91-213b82349221)
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -45,7 +55,7 @@
 ### Build
 
 ```bash
-git clone https://github.com/yourusername/cpphttp.git
+git clone https://github.com/codcreater1/cpphttp.git
 cd cpphttp
 cmake -B build -DCMAKE_BUILD_TYPE=Release
 cmake --build build --parallel
