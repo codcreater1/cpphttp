@@ -40,6 +40,9 @@ if(BUILD_EXAMPLES)
 
     add_executable(todo_api examples/todo_api.cpp)
     target_link_libraries(todo_api PRIVATE cpphttp)
+
+    add_executable(rate_limited_api examples/rate_limited_api.cpp)
+    target_link_libraries(rate_limited_api PRIVATE cpphttp)
 endif()
 
 # ── Tests (optional) ──────────────────────────────────────────────────────────
