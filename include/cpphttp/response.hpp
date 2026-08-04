@@ -20,6 +20,7 @@ public:
     void send(const std::string& body);
     void json(const std::string& json_body);
     void html(const std::string& html_body);
+    void text(const std::string& text_body);
     void file(const std::string& file_path);
     void redirect(const std::string& url, int code = 302);
     void send_status(int code);
